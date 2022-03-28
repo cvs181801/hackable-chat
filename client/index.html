@@ -10,7 +10,7 @@
         <title>Hacker Chat</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="./stylesheet.css">
+        <link href="stylesheet.css" rel="stylesheet">
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -19,16 +19,14 @@
 
         <h1>Let's Chat, Hackers</h1>
 
-        <p>Please log in</p>
-
         <form>
-            <input type="text" placeholder="username"></input>
-            <input type="password" placeholder="password"></input>
+            <input type="text" placeholder="username" id="input-username"></input>
+            <input type="password" placeholder="password" id="input-password"></input>
             <button type="submit" id="submit-btn">Enter</button>
         </form>
 
-        <div id="chat-area"></div>
+        <div id="chat-area">Please log in to enter the chat</div>
         
-        <script src="./index.js" async defer></script>
+        <script src="index.js" async defer></script>
     </body>
 </html>
