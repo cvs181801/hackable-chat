@@ -8,7 +8,6 @@ const welcomeDiv = document.getElementById('welcome-area')
 form.addEventListener('submit', function(event) {
     event.preventDefault();
     login();
- 
 })
 
 async function login() {
