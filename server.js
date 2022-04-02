@@ -31,21 +31,28 @@ app.post(`/api/login`, async (req, res)=> {
 
     try {
       const loginResponse1 = await pool.query({name: "select-user", text: `SELECT * FROM users WHERE username = '${username}' AND password = '${password}'`});
+      //const loginResponse1 = await pool.query({name: "select-user", text: `SELECT * FROM users WHERE username = '' OR 1=1--' AND password = '' OR 1=1--'`});
+
       //console.log(loginResponse1)
-      console.log('username and pw within try block ', username, password)
+      console.log(loginResponse1.rows)
+      //console.log('username and pw within try block ', username, password)
       //const loginRes = await pool.query(`UPDATE users SET isloggedin = 'true' WHERE username = ${username} RETURNING *`)
-      //const getSomeData = await pool.query('SELECT * FROM messages')
+    //const getSomeData = await pool.query('SELECT * FROM messages')
             //console.log("log in!! ", loginRes.rows[0])
             //console.log(getSomeData)
-            if(loginResponse1.rows[0].username === username && loginResponse1.rows[0].password === password) {
-              console.log( loginResponse1.rows[0], "is logged in")
+            //if(loginResponse1.rows[0].username === username && loginResponse1.rows[0].password === password) {
+              //console.log( loginResponse1.rows[0], "is logged in")
               const allMessages = await pool.query({name: "select-msgs", text:`SELECT text, username, user_id FROM messages INNER JOIN users ON messages.user_id = users.id`}) 
               console.log(allMessages.rows)
               res.send([`Welcome back ${loginResponse1.rows[0].username}!`, allMessages.rows]) //send back something to log them in
-            } else if (loginResponse1.Result.rowCount == 0){
-              console.log(  "is NOT logged in")
-              res.send('sorry Charlie')
-            }
+
+          //res.send([`Welcome back ${loginResponse1.rows[0].username}!`, loginResponse1.rows])
+
+
+            // } else if (loginResponse1.Result.rowCount == 0){
+            //   console.log(  "is NOT logged in")
+            //   res.send('sorry Charlie')
+            // }
 
    } catch(e) {
        res.send(["Something went wrong.  Please try again.", e.stack])

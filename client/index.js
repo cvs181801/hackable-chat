@@ -33,28 +33,7 @@ async function login() {
     }
 }
 
-// function handleClick(event) {
-//     event.preventDefault();
-//     if (usernameInputValue !== "" && passwordInputValue !== "" ) {
-//         login()
-//             .then(res=>{
-//                 if(res.data[3]) {
-//                     const userId = res.data[1]
-//                     const username = res.data[2]
-//                     //localStorage.setItem(`userId`, `${userId}`)
-//                     //localStorage.setItem(`username`, `${username}`)
-//                     //history.push("/chat")
-     
-//                 } else {
-//                     //setError('sorry, something went wrong!  Please try again.')
-//                     console.log('sorry, something went wrong!  Please try again.')
-//                 }
-//             })
-//     } else {
-//         //setError('User not found...please try again.')
-//         console.log('User not found...please try again.')
-//     }
-// }
+
 
 
 
