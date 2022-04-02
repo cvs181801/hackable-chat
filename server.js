@@ -31,7 +31,7 @@ app.post(`/api/login`, async (req, res)=> {
 
     try {
       const loginResponse1 = await pool.query({name: "select-user", text: `SELECT * FROM users WHERE username = '${username}' AND password = '${password}'`});
-      console.log(loginResponse1)
+      //console.log(loginResponse1)
       console.log('username and pw within try block ', username, password)
       //const loginRes = await pool.query(`UPDATE users SET isloggedin = 'true' WHERE username = ${username} RETURNING *`)
       //const getSomeData = await pool.query('SELECT * FROM messages')
@@ -39,8 +39,10 @@ app.post(`/api/login`, async (req, res)=> {
             //console.log(getSomeData)
             if(loginResponse1.rows[0].username === username && loginResponse1.rows[0].password === password) {
               console.log( loginResponse1.rows[0], "is logged in")
-              res.send([`Welcome back ${loginResponse1.rows[0].username}!`]) //send back something to log them in
-            } else {
+              const allMessages = await pool.query({name: "select-msgs", text:`SELECT text, username, user_id FROM messages INNER JOIN users ON messages.user_id = users.id`}) 
+              console.log(allMessages.rows)
+              res.send([`Welcome back ${loginResponse1.rows[0].username}!`, allMessages.rows]) //send back something to log them in
+            } else if (loginResponse1.Result.rowCount == 0){
               console.log(  "is NOT logged in")
               res.send('sorry Charlie')
             }

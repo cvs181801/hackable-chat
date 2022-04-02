@@ -3,12 +3,12 @@ const chatArea = document.getElementById("chat-area");
 const inputUsername = document.getElementById("input-username");
 const inputPw = document.getElementById("input-password");
 const form = document.getElementById('form');
-const welcomeDiv = document.createElement('p')
+const welcomeDiv = document.getElementById('welcome-area')
 
 form.addEventListener('submit', function(event) {
     event.preventDefault();
     login();
-    //chatArea.innerHTML = inputUsername.value += inputPw.value;
+ 
 })
 
 async function login() {
@@ -17,7 +17,15 @@ async function login() {
             username: inputUsername.value,
             password: inputPw.value
         })
-        console.log(search)
+        chatArea.textContent=''
+        welcomeDiv.textContent = search.data[0]
+
+        const messages = search.data[1];
+        for(let i=0; i<messages.length; i++) {
+            const messageP = document.createElement('p');
+            messageP.textContent = `${messages[i].username}: ${messages[i].text}`
+            chatArea.append(messageP)
+        }
         return search
     }
     catch(err) {
