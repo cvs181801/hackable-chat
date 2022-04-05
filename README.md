@@ -16,13 +16,17 @@ Try typing this into both the username and password fields to access the Spongeb
 
 The 2nd part of the OR statement evaluates to true (empty string OR 1=1) effectively bypassing authentication.  This is an example of why we should always use parameterized queries to avoid SQL injection.  Node-Postgres supports parameterized queries; use them liberally!
 
-If you look at the comments in server.js, you'll see I commented out the 'check username and password if...else' logic for an easier deonstration of how SQL injection works, but even with it in place, a bad actor can still do damage to your database and possibly more (such as deleting tables in your database by inserting SQL commands into the initial query). 
+If you look at the comments in server.js, you'll see I commented out the 'check username and password if...else' logic for an easier demonstration of how SQL injection works, but even with it in place, a bad actor can still do damage to your database and possibly more (such as modifying tables in your database by inserting SQL commands into the initial query like so):
+
+' OR 1=1; SELECT crabbypattyrecipe FROM messages WHERE username = 'mrCrabs';  -- 
+
+Plankton just hacked Mr. Crabs' recipe!
 
 I plan to build on this little baby and use it for demonstrating a bunch of different secure coding solutions.  Stay tuned for updates...
 
 Enjoy!
 
-Connect with me on LInked In: https://www.linkedin.com/in/cas-spicer/
+Connect with me on Linked In: https://www.linkedin.com/in/cas-spicer/
 
 Built by Cas Spicer, Full Stack Web Developer & Problem Solver Extraordinaire
 
