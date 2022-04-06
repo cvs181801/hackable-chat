@@ -12,7 +12,7 @@ Inspired by my Chat App: Let's Chat Day-2-Nite.
 
 Try typing this into both the username and password fields to access the Spongebob chats:
 
-' OR 1=1 -- 
+' OR 1=1; -- 
 
 The 2nd part of the OR statement evaluates to true (empty string OR 1=1) effectively bypassing authentication.  This is an example of why we should always use parameterized queries to avoid SQL injection.  Node-Postgres supports parameterized queries; use them liberally!
 
