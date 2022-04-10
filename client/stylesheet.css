@@ -13,7 +13,8 @@ body {
     text-align: center;
 }
 
-#chat-area {
+#chat-area,
+#newchat-area {
     border: 1px solid black;
     margin-top: 1em;
 }

@@ -26,4 +26,5 @@ INSERT INTO messages(text, user_id)
     ('oh boy! Jellyfishing!','312cf734-824f-4afc-98a3-fb7713a06c15'),
     ('spongebob, why??','490d7b31-20b4-4eb4-a555-48f1994a1cfb'),
     ('liuleiund,efijeljkalfd!!','db1f125c-5e94-48d9-9fc4-dd2605415be9'),
-    ('youboys run along! ill be countin me $$!','844cf8b7-c6cd-42dd-b72e-464ddb178f57'); 
+    ('youboys run along! ill be countin me $$!','844cf8b7-c6cd-42dd-b72e-464ddb178f57'),
+    ('<img src onerror="alert("This is a stored XSS attack.  You have been hacked.")">', '490d7b31-20b4-4eb4-a555-48f1994a1cfb'); 

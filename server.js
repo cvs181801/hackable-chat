@@ -42,7 +42,7 @@ app.post(`/api/login`, async (req, res)=> {
       //if(loginResponse1.rows[0].username === username && loginResponse1.rows[0].password === password) {
               
         const allMessages = await pool.query({name: "select-msgs", text:`SELECT text, username, user_id FROM messages INNER JOIN users ON messages.user_id = users.id`}) 
-        //console.log(allMessages.rows)
+        console.log("allMessages.rows", allMessages.rows)
         res.send([`Welcome back ${loginResponse1.rows[0].username}!`, allMessages.rows]) //send back something to log them in
 
             //} else if (loginResponse1.Result.rowCount == 0){
@@ -55,4 +55,3 @@ app.post(`/api/login`, async (req, res)=> {
    }
 })
 
-//small change
