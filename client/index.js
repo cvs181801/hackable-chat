@@ -8,10 +8,7 @@ const newChatArea = document.getElementById("newchat-area")
 const form = document.getElementById('form');
 const welcomeDiv = document.getElementById('welcome-area')
 
-form.addEventListener('submit', function(event) {
-    event.preventDefault();
-    login();
-})
+
 
 // async function login() {
 //     try {
@@ -42,21 +39,40 @@ async function login(url, data) {
         method: 'POST',
         mode: 'cors',
         cache: 'no-cache',
-        credentials: 'same-origin'
-        //headers: {
-        //    'Content-Type': 'application/json'
-        //},
-        //body: JSON.stringify(data)
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
     });
+    console.log("response", response)
     return response.json();
 }
 
-login('api/login', {username: 'spongebob', password: 'iheartcrabbypatty'})
-        .then(data => {
-            console.log(data)
-        })
+// login('api/login', {username: 'spongebob', password: 'iheartcrabbypatty'})
+//         .then(data => {
+//             console.log(data)
+//         })
 
 //*** */
+
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    login('api/login',{username: inputUsername.value, password: inputPw.value})
+        .then(data => {
+            console.log(data)
+            chatArea.textContent=''
+            welcomeDiv.textContent = data[0]
+
+            const messages = data[1];
+            console.log(messages)
+            for(let i=0; i<messages.length; i++) {
+                const messageP = document.createElement('p');
+                messageP.textContent = `${messages[i].username}: ${messages[i].text}`
+                chatArea.append(messageP)
+            }
+        })    
+})
 
 // // Example POST method implementation:
 // async function postData(url = '', data = {}) {
@@ -95,6 +111,24 @@ msgBtn.addEventListener("click", function(event) {
     
 })
 
+async function postMsg() {
+    try {
+        var search = await axios.post('api/postMsg', {
+            text: inputMsg.value
+        })
+
+        const newMessage = search.data[1];
+        console.log(newMessage)
+        const newMsg = document.createElement('p');
+        newMsg.innerHTML = inputMsg.value;
+        newChatArea.append(newMsg);
+        
+        return search
+    }
+    catch(err) {
+        console.log(err)
+    }
+}
 
 
 

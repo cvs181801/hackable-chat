@@ -26,7 +26,7 @@ app.get('/*', (req, res) => {
 
 //login route
 app.post(`/api/login`, async (req, res)=> {
-    let {username, password} = req.body; 
+    const {username, password} = req.body; 
 
     try {
       const loginResponse1 = await pool.query({name: "select-user", text: `SELECT * FROM users WHERE username = '${username}' AND password = '${password}'`});
@@ -55,3 +55,9 @@ app.post(`/api/login`, async (req, res)=> {
    }
 })
 
+app.post('/api/postMsg', async(req, res)=> {
+  const {text} = req.body;
+  console.log(text)
+  res.send(['you posted a message!', text])
+  
+})
