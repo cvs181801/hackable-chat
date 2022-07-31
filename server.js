@@ -27,9 +27,12 @@ app.get('/*', (req, res) => {
 //login route
 app.post(`/api/login`, async (req, res)=> {
     const {username, password} = req.body; 
+    console.log('username, password: ', username, password)
 
     try {
-      const loginResponse1 = await pool.query({name: "select-user", text: `SELECT * FROM users WHERE username = '${username}' AND password = '${password}'`});
+      const loginResponse1 = await pool.query(
+        {name: "select-user", text: `SELECT * FROM users WHERE username = '${username}' AND password = '${password}'`}
+      );
       
       //we can bypass authentication using the following:
       //const loginResponse1 = await pool.query({name: "select-user", text: `SELECT * FROM users WHERE username = '' OR 1=1 --' AND password = '' OR 1=1--'`});

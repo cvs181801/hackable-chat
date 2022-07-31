@@ -8,8 +8,6 @@ const newChatArea = document.getElementById("newchat-area")
 const form = document.getElementById('form');
 const welcomeDiv = document.getElementById('welcome-area')
 
-
-
 // async function login() {
 //     try {
 //         var search = await axios.post('api/login', {
@@ -99,11 +97,11 @@ form.addEventListener('submit', function(event) {
 //     });
 
 
-function postMsg() {
-    const newMsg = document.createElement('p');
-    newMsg.innerHTML = inputMsg.value;
-    newChatArea.append(newMsg);
-}
+// function postMsg() {
+//     const newMsg = document.createElement('p');
+//     newMsg.innerHTML = inputMsg.value;
+//     newChatArea.append(newMsg);
+// }
 
 msgBtn.addEventListener("click", function(event) {
     event.preventDefault();
