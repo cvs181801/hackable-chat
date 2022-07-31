@@ -1,8 +1,8 @@
-const submitBtn = document.getElementById("submit-btn");
+// const submitBtn = document.getElementById("submit-btn");
 const msgBtn = document.getElementById("message-btn")
 const chatArea = document.getElementById("chat-area");
-const inputUsername = document.getElementById("input-username");
-const inputPw = document.getElementById("input-password");
+// const inputUsername = document.getElementById("input-username");
+// const inputPw = document.getElementById("input-password");
 const inputMsg = document.getElementById("input-message")
 const newChatArea = document.getElementById("newchat-area")
 const form = document.getElementById('form');
@@ -54,23 +54,23 @@ async function login(url, data) {
 
 //*** */
 
-form.addEventListener('submit', function(event) {
-    event.preventDefault();
-    login('api/login',{username: inputUsername.value, password: inputPw.value})
-        .then(data => {
-            console.log(data)
-            chatArea.textContent=''
-            welcomeDiv.textContent = data[0]
+// form.addEventListener('submit', function(event) {
+//     event.preventDefault();
+//     login('api/login',{username: inputUsername.value, password: inputPw.value})
+//         .then(data => {
+//             console.log(data)
+//             chatArea.textContent=''
+//             welcomeDiv.textContent = data[0]
 
-            const messages = data[1];
-            console.log(messages)
-            for(let i=0; i<messages.length; i++) {
-                const messageP = document.createElement('p');
-                messageP.textContent = `${messages[i].username}: ${messages[i].text}`
-                chatArea.append(messageP)
-            }
-        })    
-})
+//             const messages = data[1];
+//             console.log(messages)
+//             for(let i=0; i<messages.length; i++) {
+//                 const messageP = document.createElement('p');
+//                 messageP.textContent = `${messages[i].username}: ${messages[i].text}`
+//                 chatArea.append(messageP)
+//             }
+//         })    
+// })
 
 // // Example POST method implementation:
 // async function postData(url = '', data = {}) {
